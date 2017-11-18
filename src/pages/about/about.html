@@ -9,13 +9,13 @@
 <ion-content no-padding>
   <div class="banner">
     <!-- las imagenes aqui -->
-    <img src="assets/img/alex-profile-background.png" class="background" />
-    <img src="assets/img/alex-profile-pic.png" class="avatar" />
+    <img src="assets/img/carlala.jpg" class="background" />
+    <img src="assets/img/jejepkms.jpg" class="avatar" />
   </div>
   <div text-center class="headline">
     <!-- pon tu nombre aqui -->
-    <h2>Carla Monge</h2>
-    <p>Software Developer</p>
+    <h2>{{datos.nombre}}</h2>
+    <p>{{datos.ocupacion}}</p>
   </div>
   <!-- lista de datos a partir de aqui -->
   <div>
@@ -47,7 +47,7 @@
     </ion-slide>
     <ion-slide>
       <p>
-      Hola, soy Carla.
+      Hola, soy Carla. Tengo {{datos.edad}} años.
       </p>
   </ion-slide>
 </ion-slides>
