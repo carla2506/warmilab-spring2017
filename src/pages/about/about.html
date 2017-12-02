@@ -17,10 +17,20 @@
     <h2>{{datos.nombre}}</h2>
     <p>{{datos.ocupacion}}</p>
   </div>
-  <!-- lista de datos a partir de aqui -->
+<!-- lista de datos a partir de aqui -->
   <div>
   <ion-slides pager>
     <ion-slide>
+      <ion-item>
+       <ion-label floating>nuevo titulo</ion-label>
+       <ion-input type="text"#tituloInput ></ion-input>
+     </ion-item>
+     <ion-item>
+      <ion-label floating>nueva info</ion-label>
+      <ion-input type="text"#datoInput ></ion-input>
+    </ion-item>
+
+      <button ion-button block (click)="agregarDato(tituloInput.value,infoInput.value,'heart')">agregar</button>
       <ion-list no-lines>
         <ion-item *ngFor="let elemento of informacion">
           <ion-icon [name]="elemento.icono" item-start></ion-icon>

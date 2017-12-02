@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
-export class AboutPage {
+export class AboutPage implements OnInit {
 
   nombre: string = "CARLA";
   ocupacion: string = "Estudiante";
@@ -31,7 +31,12 @@ export class AboutPage {
   titulo:"Telefono",
   dato:"924769638",
   icono:"call"
-  }
+},
+ {
+   titulo:"Hobby",
+   dato:"Escuchar música",
+   icono:"alarm"
+ }
 ];
   Origen: string = "Lima-Perú";
   Email: string = "carlita_2033@hotmail.com";
@@ -40,5 +45,24 @@ export class AboutPage {
   constructor(public navCtrl: NavController) {
 
   }
+
+ngOnInit() {
+  this.agregarDato(
+    "Mascota", "Perrito", "heart"
+  );
+  this.agregarDato(
+    "Colegio", "José María Arguedas", "heart"
+  );
+  this.agregarDato(
+    "Grupo favorito", "Arctic Monkeys", "heart"
+  );
+}
+agregarDato(nuevoTitulo: string, nuevoDato: string, nuevoIcono: string) {
+ this.informacion.push({
+   titulo:nuevoTitulo,
+   dato:nuevoDato,
+   icono:nuevoIcono,
+ });
+}
 
 }
