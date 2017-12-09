@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Observable }        from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 import { Todo } from '../../shared/Todo';
 import { TodoService } from '../../shared/todo.service';
@@ -18,50 +18,61 @@ export class HomePage implements OnInit {
     },
     {
       description: "Tender mi cama",
-        done:true
+      done: true
     },
     {
-      description:"Pasear a mi perrito",
-      done:true
+      description: "Pasear a mi perrito",
+      done: true
     },
     {
-      description:"Limpiar la mesa",
-      done:false
+      description: "Limpiar la mesa",
+      done: false
     }
 
   ];
-  quehacer: Todo={
+  quehacer: Todo = {
     description: "Lavar los platos",
     done: true
   };
-  quehacer2: Todo={
+  quehacer2: Todo = {
     description: "Tender mi cama",
-    done:true
+    done: true
   };
-  quehacer3: Todo={
-    description:"Pasear a mi perrito",
-    done:true
+  quehacer3: Todo = {
+    description: "Pasear a mi perrito",
+    done: true
   };
-  quehacer4: Todo={
-    description:"Limpiar la mesa",
-    done:false
+  quehacer4: Todo = {
+    description: "Limpiar la mesa",
+    done: false
   };
-  buttons = [
+
+  botones: any[] = [
+
     {
-      type: 'done',
-      class: ''
-    }, {
-      type: 'pending',
-      class: ''
-    }, {
-      type: 'all',
-      class: ''
+
+      color: "secondary",
+      grande: false,
+      texto: "terminados"
+    },
+
+    {
+      color: "danger",
+      grande: false,
+      texto: "pendientes"
+    },
+
+    {
+      color: "dark",
+      grande: true,
+      texto: "todos"
+
     }
   ];
 
   constructor(
     public navCtrl: NavController,
-    private todoService: TodoService) {}
+    private todoService: TodoService) { }
 
   ngOnInit() {
     // codigo al iniciar el componente
@@ -71,48 +82,31 @@ export class HomePage implements OnInit {
   }
 
   agregarQuehacer(nuevoQuehacer: string, terminado: boolean) {
-if (nuevoQuehacer !=="") {
-    this.quehaceres.push({
+    if (nuevoQuehacer !== "") {
+      this.quehaceres.push({
 
-        description:nuevoQuehacer,
+        description: nuevoQuehacer,
         done: terminado
- });
-  }
-}  
-
-  addTodo(todo: string) {
-    // codigo para agregar TODO
+      });
+    }
   }
 
-  updateTodo(todo: any) {
-    // codigo para actualizar TODO
-  }
+  filtrarQuehaceres(texto: string) {
+    if (texto === "terminados"){
+      this.botones[0].grande = true;
+      this.botones[1].grande = false;
+      this.botones[2].grande = false;
+    } else if (texto === "pendientes"){
+      this.botones[0].grande = false;
+      this.botones[1].grande = true;
+      this.botones[2].grande = false;
+    }else {
+      this.botones[0].grande= false;
+      this.botones[1].grande= false;
+      this.botones[2].grande= true;
 
-  showDone() {
-    // mostrar los TODOs terminados
-  }
+    }
 
-  showPending() {
-    // mostrar los TODOs pendientes
-  }
-
-  showAll() {
-    // mostrar todos los TODOs
-  }
-
-  private remapButtons(type: string) {
-    return this.buttons.map(b => {
-      if (b.type === type) {
-        b.class = 'button-large-md';
-      } else {
-        b.class = '';
-      }
-      return b;
-    });
-  }
-
-  buttonClass(type: string) {
-    return this.buttons.filter(b => b.type === type)[0].class;
-  }
+ }
 
 }
